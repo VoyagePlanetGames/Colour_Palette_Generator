@@ -9,6 +9,17 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+  <div class="topbar">
+    <div class="topbar__brand">
+      <img src="{{ url_for('static', filename='images/chen.jpeg') }}"
+           alt="Chen" class="topbar__avatar">
+      <span class="topbar__name">Chen builds</span>
+    </div>
+    <a class="bmc" href="https://buymeacoffee.com/chenbuilds?new=1" target="_blank" rel="noopener">
+      ☕ Buy me a coffee
+    </a>
+  </div>
+
   <header class="hero">
     <h1>🎨 Colour Palette Generator</h1>
     <p>Upload an image and discover its 10 most common colours — ready to copy straight into your CSS or design tool.</p>
@@ -64,9 +75,6 @@
 
   <footer>
     <p>Built for Day 92 of 100 Days of Code · image processing with NumPy.</p>
-    <a class="bmc" href="https://buymeacoffee.com/chenbuilds?new=1" target="_blank" rel="noopener">
-      ☕ Buy me a coffee
-    </a>
   </footer>
 
   <div class="toast" id="toast">Copied!</div>
