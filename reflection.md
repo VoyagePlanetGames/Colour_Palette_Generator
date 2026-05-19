@@ -1,6 +1,7 @@
 # Day 92 — Reflection: Colour Palette Generator
 
-🔗 **Live project / source code:** https://github.com/VoyagePlanetGames/Colour_Palette_Generator
+🔗 **Live site:** https://colour-palette-generator-kedx.onrender.com
+🔗 **Source code:** https://github.com/VoyagePlanetGames/Colour_Palette_Generator
 
 ## How I approached the project
 
