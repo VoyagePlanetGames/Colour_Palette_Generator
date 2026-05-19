@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colour Palette Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <h1>🎨 Colour Palette Generator</h1>
+    <p>Upload an image and discover its 10 most common colours — ready to copy straight into your CSS or design tool.</p>
+  </header>
+
+  <main>
+    <section class="card upload-card">
+      <form method="POST" enctype="multipart/form-data" id="upload-form">
+        <label class="file-drop" id="file-drop">
+          <input type="file" name="image" accept="image/*" id="file-input" hidden>
+          <span class="file-drop__icon">📁</span>
+          <span class="file-drop__text" id="file-drop-text">Choose an image or drag it here</span>
+          <span class="file-drop__hint">PNG, JPG, GIF, BMP or WEBP — up to 10 MB</span>
+        </label>
+        <button type="submit" class="btn">Extract colours</button>
+      </form>
+
+      {% if error %}
+        <p class="error">⚠️ {{ error }}</p>
+      {% endif %}
+    </section>
+
+    {% if palette %}
+      <section class="results">
+        {% if preview %}
+          <div class="card preview-card">
+            <h2>Your image</h2>
+            <img src="{{ preview }}" alt="Uploaded image" class="preview">
+          </div>
+        {% endif %}
+
+        <div class="card palette-card">
+          <h2>Top 10 colours</h2>
+          <p class="subtle">Click any swatch to copy its HEX code.</p>
+          <div class="swatches">
+            {% for colour in palette %}
+              <button class="swatch" type="button"
+                      data-hex="{{ colour.hex }}"
+                      title="Copy {{ colour.hex }}">
+                <span class="swatch__colour" style="background: {{ colour.hex }};"></span>
+                <span class="swatch__info">
+                  <span class="swatch__hex">{{ colour.hex }}</span>
+                  <span class="swatch__rgb">{{ colour.rgb }}</span>
+                  <span class="swatch__percent">{{ colour.percent }}% of pixels</span>
+                </span>
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    {% endif %}
+  </main>
+
+  <footer>
+    <p>Built for Day 92 of 100 Days of Code · image processing with NumPy.</p>
+    <a class="bmc" href="https://buymeacoffee.com/chenbuilds?new=1" target="_blank" rel="noopener">
+      ☕ Buy me a coffee
+    </a>
+  </footer>
+
+  <div class="toast" id="toast">Copied!</div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
