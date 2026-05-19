@@ -104,4 +104,6 @@ def file_too_large(_error):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Port 5001 (not Flask's default 5000) because macOS uses 5000
+    # for its AirPlay Receiver service.
+    app.run(debug=True, port=5001)

@@ -26,7 +26,10 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Then open http://127.0.0.1:5000 in your browser.
+Then open http://127.0.0.1:5001 in your browser.
+
+> Port 5001 is used instead of Flask's default 5000, because macOS runs
+> its AirPlay Receiver service on port 5000.
 
 ## Tech
 
