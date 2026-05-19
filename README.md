@@ -31,6 +31,18 @@ Then open http://127.0.0.1:5001 in your browser.
 > Port 5001 is used instead of Flask's default 5000, because macOS runs
 > its AirPlay Receiver service on port 5000.
 
+## Deploy it online (Render)
+
+The repo includes a `render.yaml` blueprint, so anyone can put it online for free:
+
+1. Go to [render.com](https://render.com) and sign in with GitHub.
+2. Click **New → Blueprint** and pick the `Colour_Palette_Generator` repo.
+3. Render reads `render.yaml`, installs the dependencies and starts the app
+   with `gunicorn`. You get a public `https://...onrender.com` URL to share.
+
+Every `git push` to `main` redeploys automatically. (On the free plan the app
+sleeps after 15 minutes idle and takes ~30s to wake on the next visit.)
+
 ## Tech
 
 - **Flask** — web server and templating

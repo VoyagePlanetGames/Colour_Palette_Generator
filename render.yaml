@@ -1,0 +1,14 @@
+# Render Blueprint — deploys this Flask app automatically from GitHub.
+# See https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: colour-palette-generator
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # gunicorn is the production server; it must bind to the port
+    # Render provides in the $PORT environment variable.
+    startCommand: gunicorn main:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.1
